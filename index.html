@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Montserrat:wght@100&family=Sacramento&display=swap" rel="stylesheet">
+  </head>
+  <body>
+            <h1>Dynamic traffic lights</h1>
+            <h2>welcome</h2>
+            <div class="left">
+              <h2 id="time0" style="text-align: right;position: relative;top:150px;left:70px;" >60</h2>
+              <img id="image0" src="img/0.jpg" width="500" height="250" class="imgc" alt="ariel-view">
+            </div>
+            <div class="top">
+              <h2 id="time1" style="position: relative;top:450px;">60</h2>
+              <img id="image1" src="img/0.jpg" width="500" height="250" class="imgc topimg" alt="ariel-view">
+            </div>
+            <div class="right">
+              <h2  id="time2" style="text-align: left;position: relative;top:150px;right:80px;">60</h2>
+              <img class="rightimg" id="image2" src="img/0.jpg" width="500" height="250" class="imgc" alt="ariel-view">
+            </div>
+            <div class="bottom">
+              <h2 id="time3" style="text-align: left;vertical-align:top;position: relative;top:-450px;left:230px;">60</h2>
+              <img class="bottomimg" id="image3" src="img/0.jpg" width="500" height="250" class="imgc" alt="ariel-view">
+            </div>
+
+
+      <script type="text/javascript">
+      setInterval(function (){
+        setTimeout(function (){
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            console.log(this.responseText.split("."))
+            document.getElementById("time" + this.responseText.split(".")[1]).innerHTML = this.responseText.split(".")[0]
+            document.getElementById("image" + this.responseText.split(".")[1]).innerHTML = "img/" +  this.responseText.split(".")[0] + ".jpg"
+          };
+          xhttp.open("POST", "http://localhost:3000", true);
+          xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+          xhttp.send(document.getElementById('image0').src+".0");
+          document.getElementById('image1').src = ("img/"+Math.floor(Math.random() * 21).toString()+ ".jpg")
+        },5000)
+
+        setTimeout(function (){
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            console.log(this.responseText)
+            document.getElementById("time" + this.responseText.split(".")[1]).innerHTML = this.responseText.split(".")[0]
+            document.getElementById("image" + this.responseText.split(".")[1]).innerHTML = "img/" +  this.responseText.split(".")[0] + ".jpg"
+          };
+          xhttp.open("POST", "http://localhost:3000", true);
+          xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+          xhttp.send(document.getElementById('image1').src+".1");
+          document.getElementById('image2').src = ("img/"+Math.floor(Math.random() * 21).toString()+ ".jpg")
+        },10000)
+
+        setTimeout(function (){
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            console.log(this.responseText)
+            document.getElementById("time" + this.responseText.split(".")[1]).innerHTML = this.responseText.split(".")[0]
+            document.getElementById("image" + this.responseText.split(".")[1]).innerHTML = "img/" +  this.responseText.split(".")[0] + ".jpg"
+          };
+          xhttp.open("POST", "http://localhost:3000", true);
+          xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+          xhttp.send(document.getElementById('image2').src+".2");
+          document.getElementById('image3').src = ("img/"+Math.floor(Math.random() * 21).toString()+ ".jpg")
+        },15000)
+
+        setTimeout(function (){
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            console.log(this.responseText)
+            document.getElementById("time" + this.responseText.split(".")[1]).innerHTML = this.responseText.split(".")[0]
+            document.getElementById("image" + this.responseText.split(".")[1]).innerHTML = "img/" +  this.responseText.split(".")[0] + ".jpg"
+          };
+          xhttp.open("POST", "http://localhost:3000", true);
+          xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+          xhttp.send(document.getElementById('image3').src+".3");
+          document.getElementById('image0').src = ("img/"+Math.floor(Math.random() * 21).toString()+ ".jpg")
+        },20000)
+      },50000)
+      </script>
+</body>
+</html>
